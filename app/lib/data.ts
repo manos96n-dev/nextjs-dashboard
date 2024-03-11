@@ -8,6 +8,7 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  FormattedCustomersTable,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -181,6 +182,26 @@ export async function fetchCustomers() {
       SELECT
         id,
         name
+      FROM customers
+      ORDER BY name ASC
+    `;
+
+    const customers = data.rows;
+    return customers;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all customers.');
+  }
+}
+
+export async function fetchAllCustomers() {
+  try {
+    const data = await sql<FormattedCustomersTable>`
+      SELECT
+        id,
+        name,
+        email,
+        image_url
       FROM customers
       ORDER BY name ASC
     `;
