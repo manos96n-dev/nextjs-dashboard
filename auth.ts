@@ -8,7 +8,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function getUser(email: string): Promise<User | undefined> {
+async function getUser(email: string) {
   try {
     const user = await prisma.user.findUnique({ where: { email } });
 
@@ -21,7 +21,7 @@ async function getUser(email: string): Promise<User | undefined> {
         password: user.password,
       };
     }
-    console.log(user);
+
     return newUser;
   } catch (error) {
     console.error('Failed to fetch user:', error);
