@@ -143,7 +143,6 @@ export async function fetchFilteredInvoices(
       skip: offset,
       orderBy: { date: 'desc' },
     });
-    console.log(invoices.map((invoice) => invoice.amount));
 
     return invoices;
   } catch (error) {
