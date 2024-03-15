@@ -3,7 +3,7 @@
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 export type User = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   password: string;
@@ -27,6 +27,7 @@ export type Invoice = {
 };
 
 export type Revenue = {
+  id: number;
   month: string;
   revenue: number;
 };
@@ -36,7 +37,7 @@ export type LatestInvoice = {
   name: string;
   image_url: string;
   email: string;
-  amount: string;
+  amount: number;
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function
@@ -76,13 +77,13 @@ export type FormattedCustomersTable = {
 };
 
 export type CustomerField = {
-  id: string;
+  id: number;
   name: string;
 };
 
 export type InvoiceForm = {
-  id: string;
-  customer_id: string;
+  id: number;
+  customer_id: number;
   amount: number;
-  status: 'pending' | 'paid';
+  status: string;
 };

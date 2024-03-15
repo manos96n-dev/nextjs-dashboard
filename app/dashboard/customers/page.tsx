@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { fetchAllCustomers } from '@/app/lib/data';
+import { fetchCustomers } from '@/app/lib/data';
 import { lusitana } from '@/app/ui/fonts';
 
 export const metadata: Metadata = {
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const customers = await fetchAllCustomers();
+  const customers = await fetchCustomers();
 
   return (
     <div className="w-full">

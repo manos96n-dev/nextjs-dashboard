@@ -1,8 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { CustomerField } from '@/app/lib/definitions';
 import {
+  ArrowRightIcon,
   CheckIcon,
   ClockIcon,
   CurrencyDollarIcon,
@@ -139,8 +140,18 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         >
           Cancel
         </Link>
-        <Button type="submit">Create Invoice</Button>
+        <CreateButton />
       </div>
     </form>
+  );
+}
+
+function CreateButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button aria-disabled={pending}>
+      Create Invoice <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+    </Button>
   );
 }

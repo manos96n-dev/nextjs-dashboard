@@ -1,9 +1,10 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import Link from 'next/link';
 import { CustomerField, InvoiceForm } from '@/app/lib/definitions';
 import {
+  ArrowRightIcon,
   CheckIcon,
   ClockIcon,
   CurrencyDollarIcon,
@@ -22,8 +23,9 @@ export default function EditInvoiceForm({
 }) {
   const initialState = { message: null, errors: {} };
 
-  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id.toString());
   const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
+  const pending = useFormStatus();
 
   return (
     <form action={dispatch}>
@@ -131,8 +133,19 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        {/* <Button type="submit"  >Edit Invoice</Button> */}
+        <EditButton />
       </div>
     </form>
+  );
+}
+
+function EditButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button aria-disabled={pending}>
+      Edit Invoice <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+    </Button>
   );
 }
