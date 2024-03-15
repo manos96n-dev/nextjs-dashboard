@@ -136,7 +136,7 @@ export async function fetchFilteredInvoices(
           },
           { date: { contains: query } },
           { status: { contains: query } },
-          { amount: { equals: +query * 100 } },
+          // { amount: { equals: +query * 100 } },
         ],
       },
       take: ITEMS_PER_PAGE,
@@ -171,7 +171,7 @@ export async function fetchInvoicesPages(query: string) {
                 OR: [
                   { date: { contains: query } },
                   { status: { contains: query } },
-                  { amount: { equals: +query * 100 } },
+                  // { amount: { equals: +query * 100 } },
                 ],
               },
             },
