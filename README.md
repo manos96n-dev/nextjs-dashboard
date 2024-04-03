@@ -1,6 +1,6 @@
 ## Next.js Admin Dashboard with App Router
 
-This repository is a simple admin dashboard created with NextJS, NextAuth, TailwindCSS, and PostgreSQL.
+This repository is a simple admin dashboard created with Next.js 14, NextAuth, TailwindCSS, and PostgreSQL.
 
 <img width="1440" alt="Screenshot 2024-04-03 at 10 49 17 AM" src="https://github.com/manos96n-dev/nextjs-dashboard/assets/76110584/72b9643a-0c9f-4b12-9fd9-f9f111bc2375">
 <br/>
